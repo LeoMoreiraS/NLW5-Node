@@ -1,8 +1,10 @@
 import express from "express";
-
+import "./database";
 const app = express();
+import {routes} from "./routes";
 
-app.listen(3333, ()=> console.log("Servidor rodando na porta 3333"));
+app.use(express.json());
+app.use(routes);
 
 
 /**
@@ -13,8 +15,9 @@ app.listen(3333, ()=> console.log("Servidor rodando na porta 3333"));
  * patch = alterar informação especifica
  */
 
-app.get("/",(req,res)=>{
 
+app.get("/",(req,res)=>{
+    
     //return res.send("Olá Next Level Week 5");
     return res.json({
         message:"Olá NLW 05!"
@@ -26,3 +29,4 @@ app.post("/", (req,res)=>{
         message:"Usúario salvo com sucesso!",
     })
 })
+app.listen(3333, ()=> console.log("Servidor rodando na porta 3333"));
