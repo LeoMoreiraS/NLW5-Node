@@ -1,7 +1,9 @@
 import { Router } from "express";
+import { MessagesController } from "./controllers/MessagesController";
 import { SettingsController } from "./controllers/SettingsController";
+import { UsersController } from "./controllers/UsersController";
 
-import "./database"
+import "./database";
 
 /**
  * Tipos de parâmetros
@@ -12,10 +14,16 @@ import "./database"
  * Body Params => {
  *  "name" = body.name
  * }
- * 
-*/
+ *
+ */
+const usersController = new UsersController();
 const settingsController = new SettingsController();
+const messagesController = new MessagesController();
 const routes = Router();
-routes.post("/settings",settingsController.create)
 
-export {routes};
+routes.post("/settings", settingsController.create);
+routes.post("/users", usersController.create);
+routes.post("/messages", messagesController.create);
+routes.get("/messages/:id", messagesController.showByUser);
+
+export { routes };
