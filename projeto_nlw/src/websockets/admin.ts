@@ -30,7 +30,7 @@ io.on("connect", async (socket)=>{
     })
     socket.on("admin_user_in_support",async params=>{
         const{user_id}= params;
-        const connection = await connectionsService.update(user_id,socket.id);
+         await connectionsService.update(user_id,socket.id);
         const allConnectionsWithoutAdmin = await connectionsService.findAllWithoutAdmin();
         io.emit("admin_list_all_users",allConnectionsWithoutAdmin);
     })

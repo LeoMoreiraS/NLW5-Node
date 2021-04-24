@@ -14,6 +14,8 @@
   </head>
 
   <body>
+    <audio src="../sounds/newUser.mp3" id="newUser" style="display:none"></audio>
+    <audio src="../sounds/notification.mp3" id="notification" style="display:none"></audio>
     <div id="list_users"></div>
 
     <script id="template" type="x-tmpl-mustache">
@@ -39,6 +41,7 @@
                  </div>
       </div>
     </script>
+    
   </body>
 
   <script src="/socket.io/socket.io.js"></script>
